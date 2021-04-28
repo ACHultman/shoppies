@@ -4,9 +4,9 @@
   "author": "@achultman",
   "license": "MIT",
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/index.js",
     "build": "next build",
-    "start": "next start",
+    "start": "cross-env NODE_ENV=production node server/index.js",
     "type-check": "tsc --pretty --noEmit",
     "format": "prettier --write .",
     "lint": "eslint . --ext ts --ext tsx --ext js",
@@ -26,6 +26,9 @@
     ]
   },
   "dependencies": {
+    "cacheable-response": "^2.1.6",
+    "cross-env": "^7.0.2",
+    "express": "^4.17.1",
     "next": "latest",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -47,6 +50,7 @@
     "jest": "^26.6.3",
     "jest-watch-typeahead": "^0.6.1",
     "lint-staged": "^10.0.10",
+    "nodemon": "^2.0.7",
     "prettier": "^2.0.2",
     "typescript": "^4.1.3"
   }
