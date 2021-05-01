@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Movie from '../components/results/Movie'
+import Movie from '../components/movies/Movie'
 
 export const Home = (): JSX.Element => {
   const router = useRouter()

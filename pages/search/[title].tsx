@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next'
 import React from 'react'
-import Movies from '../../components/results/Movies'
+import Movies from '../../components/movies/Movies'
 import SearchBar from '../../components/SearchBar'
 import { IMovieShort } from '../../utils/types'
 interface PropsResults {
