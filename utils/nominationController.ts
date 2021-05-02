@@ -1,5 +1,5 @@
-const KEY_NOMINATIONS = 'nominations'
-const KEY_ID = 'imdbIDs'
+export const KEY_NOMINATIONS = 'nominations'
+export const KEY_ID = 'imdbIDs'
 
 export const handleNominationChangeRequest = (imdbID: string): void => {
   if (!imdbID || imdbID.length === 0) {
