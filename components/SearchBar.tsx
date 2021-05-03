@@ -11,11 +11,13 @@ export const SearchBar = (): JSX.Element => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (terms != '') {
+    if (!terms || terms.length === 0) {
+      alert('Please enter search terms.')
+    } else if (terms.length < 3) {
+      alert('Your search should be at least three characters long.')
+    } else {
       const finalTerms = terms.replace(' ', '-')
       Router.push('/search/[title]', `/search/${finalTerms}`)
-    } else {
-      alert('Please enter search terms.')
     }
   }
   return (
@@ -28,6 +30,7 @@ export const SearchBar = (): JSX.Element => {
           <input
             type="text"
             name="query"
+            aria-label="search-input"
             placeholder="Search movies by name..."
             autoComplete="off"
             className="text-gray-800 appearance-none w-full outline-none focus:outline-none active:outline-none"
@@ -36,6 +39,7 @@ export const SearchBar = (): JSX.Element => {
           />
           <button
             type="submit"
+            aria-label="search-submit"
             className="ml-1 outline-none focus:outline-none active:outline-none"
           >
             <svg
