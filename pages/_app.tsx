@@ -13,7 +13,15 @@ interface AppProps {
 export const App = ({ Component, pageProps }: AppProps): JSX.Element => {
   const store = useStore()
   return (
-    <PersistGate persistor={store.__persistor} loading={<div>Loading...</div>}>
+    <PersistGate
+      persistor={
+        // TODO find alternative to this hack
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        store.__persistor
+      }
+      loading={<div>Loading...</div>}
+    >
       <Layout>
         <Component {...pageProps} />
       </Layout>
