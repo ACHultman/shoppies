@@ -2,13 +2,15 @@ import Image from 'next/image'
 import { HeartIcon } from '@heroicons/react/outline'
 
 import { IMovieShort } from '../../utils/types'
-//import { handleNominationChangeRequest } from '../../utils/nominationController'
 import { formatYear } from '../../utils/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNomination, removeNomination } from '../../store/nominations/action'
+import { RootState } from '../../store/store'
 
 const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
-  const globalState = useSelector((state) => state.nominations.nominations)
+  const globalState = useSelector(
+    (state: RootState) => state.nominations.nominations
+  )
   const dispatch = useDispatch()
   const onClick = () => {
     if (globalState.indexOf(imdbID) === -1) {

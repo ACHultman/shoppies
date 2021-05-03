@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Nominations from '../../components/Nominations'
+import { RootState } from '../../store/store'
 import { IMovieLong } from '../../utils/types'
 import { fetchNominations } from '../../utils/utils'
 
 const NominationsWrapper = (): JSX.Element => {
   const nominationIDs: string[] = useSelector(
-    (state) => state.nominations.nominations
+    (state: RootState) => state.nominations.nominations
   )
   const [nominations, setNominations] = useState([])
 

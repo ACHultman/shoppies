@@ -1,8 +1,11 @@
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
 
 const Banner = (): JSX.Element => {
-  const nominations = useSelector((state) => state.nominations.nominations)
+  const nominations = useSelector(
+    (state: RootState) => state.nominations.nominations
+  )
   const router = useRouter()
   if (!nominations || nominations.length < 5) {
     return <></>

@@ -4,8 +4,8 @@ import thunkMiddleware from 'redux-thunk'
 import nominations from './nominations/reducer'
 
 //COMBINING ALL REDUCERS
-const combinedReducer = combineReducers({
-  nominations,
+export const combinedReducer = combineReducers({
+  nominations: nominations,
   // OTHER REDUCERS WILL BE ADDED HERE
 })
 
@@ -45,6 +45,8 @@ const makeStore = ({ isServer }) => {
     return store
   }
 }
+
+export type RootState = ReturnType<typeof combinedReducer>
 
 // Export the wrapper & wrap the pages/_app.js with this wrapper only
 export const wrapper = createWrapper(makeStore)
