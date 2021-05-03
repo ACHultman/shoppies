@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home page matches snapshot 1`] = `
+exports[`Search page matches snapshot 1`] = `
 <DocumentFragment>
   <div
     class="container mx-auto pt-6"
@@ -12,6 +12,7 @@ exports[`Home page matches snapshot 1`] = `
         class="w-full h-10 pl-3 pr-2 bg-white border rounded-full flex justify-between items-center relative"
       >
         <input
+          aria-label="search-input"
           autocomplete="off"
           class="text-gray-800 appearance-none w-full outline-none focus:outline-none active:outline-none"
           name="query"
@@ -20,6 +21,7 @@ exports[`Home page matches snapshot 1`] = `
           value=""
         />
         <button
+          aria-label="search-submit"
           class="ml-1 outline-none focus:outline-none active:outline-none"
           type="submit"
         >
