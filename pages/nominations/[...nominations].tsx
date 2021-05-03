@@ -17,7 +17,7 @@ const SharedNominations = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const nominationIDs: string[] = context.query.nominations || []
+  const nominationIDs: string[] = (context.query.nominations as string[]) || []
   const nominations: IMovieLong[] = await fetchNominations(nominationIDs)
   return {
     props: {
