@@ -2,14 +2,21 @@ import Image from 'next/image'
 import { HeartIcon } from '@heroicons/react/outline'
 
 import { IMovieShort } from '../../utils/types'
-import { handleNominationChangeRequest } from '../../utils/nominationController'
+//import { handleNominationChangeRequest } from '../../utils/nominationController'
 import { formatYear } from '../../utils/utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { addNomination, removeNomination } from '../../store/nominations/action'
 
 const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
+  const globalState = useSelector((state) => state.nominations.nominations)
+  const dispatch = useDispatch()
   const onClick = () => {
-    handleNominationChangeRequest(imdbID)
+    if (globalState.indexOf(imdbID) === -1) {
+      dispatch(addNomination(globalState, imdbID))
+    } else {
+      dispatch(removeNomination(globalState, imdbID))
+    }
   }
-
   if (!Poster || Poster === 'N/A') {
     Poster = '/noPoster.png'
   }
@@ -36,7 +43,7 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
           >
             {Title}
           </h2>
-          <p className="h-10 w-10" onClick={() => onClick()}>
+          <p className="h-10 w-10" onClick={onClick}>
             <HeartIcon />
           </p>
         </div>

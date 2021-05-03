@@ -1,34 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { KEY_ID, KEY_NOMINATIONS } from '../../utils/nominationController'
+import { useSelector } from 'react-redux'
 import Nominations from '../../components/Nominations'
+import { IMovieLong } from '../../utils/types'
 import { fetchNominations } from '../../utils/utils'
 
 const NominationsWrapper = (): JSX.Element => {
-  const [nominations, setNominations] = useState(null)
+  const nominationIDs: string[] = useSelector(
+    (state) => state.nominations.nominations
+  )
+  const [nominations, setNominations] = useState([])
 
   useEffect(() => {
     const getNominations = async () => {
-      let parsedNominations
-      const nominationsString = localStorage.getItem(KEY_NOMINATIONS)
-      if (nominationsString && nominationsString.length > 0) {
-        // nominations value not null and string not empty
-        parsedNominations = JSON.parse(nominationsString)
-        if (parsedNominations && parsedNominations[KEY_ID]) {
-          // nominations value valid JSON, has KEY_ID property
-          const fetchedNominations = await fetchNominations(
-            parsedNominations[KEY_ID]
-          )
+      const fetchedNominations: IMovieLong[] = await fetchNominations(
+        nominationIDs
+      )
 
-          setNominations([...fetchedNominations])
-        }
-      }
+      setNominations([...fetchedNominations])
     }
-
     getNominations()
-  }, [setNominations])
+  }, [nominationIDs])
 
   const hasNominations =
-    nominations && nominations.length && nominations.length > 0
+    nominationIDs && nominationIDs.length && nominationIDs.length > 0
 
   if (!hasNominations) return <></>
 

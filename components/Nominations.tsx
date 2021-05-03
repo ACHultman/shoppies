@@ -12,7 +12,6 @@ const Nominations = ({
       <div>
         <h1>Nominations</h1>
       </div>
-
       <div className="flex flex-col">
         {nominations &&
           nominations.map((nom, idx) => {
