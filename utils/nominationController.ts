@@ -1,9 +1,9 @@
-const KEY_NOMINATIONS = 'nominations'
-const KEY_ID = 'imdbIDs'
+export const KEY_NOMINATIONS = 'nominations'
+export const KEY_ID = 'imdbIDs'
 
 export const handleNominationChangeRequest = (imdbID: string): void => {
   if (!imdbID || imdbID.length === 0) {
-    alert('Failed to add nomination. Please try again later.')
+    alert('Failed to find nomination. Please try again later.')
     return
   }
 
