@@ -13,7 +13,7 @@ const Banner = (): JSX.Element => {
       {router.route !== '/nominations' && (
         <button
           onClick={() => router.push('/nominations')}
-          className="bg-white text-gray-800 focus:outline-none font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
+          className="transition duration-500 ease-in-out hover:bg-purple-300 transform hover:-translate-y-1 hover:scale-110 bg-white text-gray-800 focus:outline-none font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
         >
           Review Nominations
         </button>
