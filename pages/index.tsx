@@ -26,7 +26,7 @@ export const Home = (): JSX.Element => {
           </h3>
           <button
             onClick={() => handleSearchClick()}
-            className="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
+            className="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
           >
             Search For Movies
           </button>
@@ -40,9 +40,7 @@ export const Home = (): JSX.Element => {
           <div className="w-full md:w-1/2">
             <h4 className="text-3xl  font-bold mb-3">Search</h4>
             <p className=" mb-8 text-gray-200">
-              Our Smart Health Monitoring Wristwatch is able to capture you
-              vitals while you exercise. You can create different category of
-              exercises and can track your vitals on the go.
+              Just enter the titles of your favourite movies!
             </p>
           </div>
           <div className="w-full md:w-1/2">
@@ -128,7 +126,7 @@ export const Home = (): JSX.Element => {
           </h3>
           <button
             onClick={() => handleSearchClick()}
-            className="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider"
+            className="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
           >
             Search For Movies
           </button>

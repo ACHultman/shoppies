@@ -1,4 +1,5 @@
-import React from 'react'
+import { CheckIcon } from '@heroicons/react/outline'
+import React, { useState } from 'react'
 import { IMovieLong } from '../utils/types'
 import Movie from './movies/Movie'
 
@@ -7,10 +8,29 @@ const Nominations = ({
 }: {
   nominations: IMovieLong[]
 }): JSX.Element => {
+  const [clicked, setClicked] = useState(false)
+  let pathToShare = window.location.href // current path (e.g. http://<domain>/nominations)
+  nominations.map((nom) => (pathToShare = pathToShare + `/${nom.imdbID}`)) // append all IDs to path
   return (
     <div>
-      <div>
-        <h1 className="text-4xl mb-10 ml-5">Nominations</h1>
+      <div className="container mx-auto mb-10 text-center">
+        <h1 className="text-4xl ">Nominations</h1>
+        <button
+          className="transition duration-500 ease-in-out hover:bg-purple-300 transform hover:-translate-y-1 hover:scale-110 bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
+          onClick={() => {
+            navigator.clipboard.writeText(pathToShare)
+            setClicked(true)
+          }}
+        >
+          {clicked ? (
+            <div className="flex text-center">
+              <h3 className="text-left">Copied</h3>
+              <CheckIcon className="h-8 ml-3 pb-2" />{' '}
+            </div>
+          ) : (
+            'Get Share Link'
+          )}
+        </button>
       </div>
       <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-3 gap-20">
         {nominations &&

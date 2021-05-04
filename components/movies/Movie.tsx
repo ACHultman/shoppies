@@ -5,6 +5,7 @@ import { formatYear } from '../../utils/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNomination, removeNomination } from '../../store/nominations/action'
 import { RootState } from '../../store/store'
+import { ThumbDownIcon, ThumbUpIcon } from '@heroicons/react/outline'
 
 const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
   const globalState = useSelector(
@@ -22,13 +23,12 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
     Poster = '/noPoster.png'
   }
 
+  const movieNominated = globalState.indexOf(imdbID) > -1
+
   return (
     <div className="group">
-      <div
-        onClick={() => onClick()}
-        className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 cursor-pointer"
-      >
-        <div className="">
+      <div className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40">
+        <div className="relative">
           <Image
             src={Poster}
             layout={'responsive'}
@@ -39,15 +39,21 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
         <div className="p-2 flex justify-between">
           <h2
             className={
-              'text-2xl transition-all duration-100 ease-in-out group-hover:font-bold'
+              'text-2xl transition-all duration-100 ease-in-out group-hover:font-bold w-4/5'
             }
           >
             {Title}
           </h2>
+          <div
+            className="transition duration-500 ease-in-out sm:opacity-0 group-hover:opacity-100 h-8 w-8 cursor-pointer"
+            onClick={onClick}
+          >
+            {movieNominated ? <ThumbDownIcon /> : <ThumbUpIcon />}
+          </div>
+          <p className="sm:opacity-0 group-hover:opacity-100">
+            {formatYear(Year)}
+          </p>
         </div>
-      </div>
-      <div className="flex items-center opacity-0 group-hover:opacity-100">
-        <p>{formatYear(Year)}</p>
       </div>
     </div>
   )

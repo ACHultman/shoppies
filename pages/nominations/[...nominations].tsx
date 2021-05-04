@@ -12,7 +12,7 @@ const SharedNominations = ({
   return nominations ? (
     <Nominations nominations={nominations} />
   ) : (
-    <h2>Loading</h2>
+    <h2>Loading...</h2>
   )
 }
 
