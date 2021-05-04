@@ -40,9 +40,7 @@ export const Home = (): JSX.Element => {
           <div className="w-full md:w-1/2">
             <h4 className="text-3xl  font-bold mb-3">Search</h4>
             <p className=" mb-8 text-gray-200">
-              Our Smart Health Monitoring Wristwatch is able to capture you
-              vitals while you exercise. You can create different category of
-              exercises and can track your vitals on the go.
+              Just enter the titles of your favourite movies!
             </p>
           </div>
           <div className="w-full md:w-1/2">

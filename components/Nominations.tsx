@@ -7,6 +7,8 @@ const Nominations = ({
 }: {
   nominations: IMovieLong[]
 }): JSX.Element => {
+  //const router = useRouter()
+  //const path =
   return (
     <div>
       <div>

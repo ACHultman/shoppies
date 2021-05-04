@@ -27,33 +27,14 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
 
   return (
     <div className="group">
-      <div
-        onClick={() => onClick()}
-        className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 cursor-pointer"
-      >
+      <div className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40">
         <div className="relative">
           <Image
             src={Poster}
             layout={'responsive'}
             height={1920 * 1.48}
             width={1920}
-            className="group-hover:opacity-50"
           />
-          <div className="transition duration-500 ease-in-out z-40 absolute top-1/3 left-0.5 opacity-0 group-hover:opacity-100 h-24 w-24 text-center">
-            {movieNominated ? (
-              <>
-                <ThumbDownIcon />
-                <p className="text-center text-xl">
-                  Click to remove nomination
-                </p>
-              </>
-            ) : (
-              <>
-                <ThumbUpIcon />
-                <p className="text-center text-xl">Click to nominate</p>{' '}
-              </>
-            )}
-          </div>
         </div>
         <div className="p-2 flex justify-between">
           <h2
@@ -63,8 +44,13 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
           >
             {Title}
           </h2>
-          {movieNominated && <ThumbUpIcon className="h-8 w-8" />}
-          <p className="opacity-0 group-hover:opacity-100">
+          <div
+            className="transition duration-500 ease-in-out sm:opacity-0 group-hover:opacity-100 h-8 w-8 cursor-pointer"
+            onClick={onClick}
+          >
+            {movieNominated ? <ThumbDownIcon /> : <ThumbUpIcon />}
+          </div>
+          <p className="sm:opacity-0 group-hover:opacity-100">
             {formatYear(Year)}
           </p>
         </div>

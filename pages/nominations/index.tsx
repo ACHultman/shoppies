@@ -25,15 +25,13 @@ const NominationsWrapper = (): JSX.Element => {
   const hasNominations =
     nominationIDs && nominationIDs.length && nominationIDs.length > 0
 
-  if (!hasNominations) return <></>
-
   return (
     <div>
       <div>
         {hasNominations ? (
           <Nominations nominations={nominations} />
         ) : (
-          <h2>No Nominations</h2>
+          <h2 className="text-4xl mb-10 ml-5">No Nominations</h2>
         )}
       </div>
     </div>
