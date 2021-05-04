@@ -1,8 +1,26 @@
 import Router from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const SearchBar = (): JSX.Element => {
   const [terms, setTerms] = useState('')
+  const [error, setError] = useState('')
+
+  const routeToResults = (terms: string) => {
+    if (!terms || terms.length === 0) {
+      setError('Enter a name of your favourite movie (e.g. "tenet").')
+    } else if (terms.length < 3) {
+      setError('Your search should be at least three characters long.')
+    } else {
+      setError('')
+      const finalTerms = terms.replace(' ', '-')
+      Router.push('/search/[title]', `/search/${finalTerms}`)
+    }
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => routeToResults(terms), 400)
+    return () => clearTimeout(timer)
+  }, [routeToResults, terms])
 
   const handleEntry = (e) => {
     setTerms(e.target.value)
@@ -11,14 +29,7 @@ export const SearchBar = (): JSX.Element => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!terms || terms.length === 0) {
-      alert('Please enter search terms.')
-    } else if (terms.length < 3) {
-      alert('Your search should be at least three characters long.')
-    } else {
-      const finalTerms = terms.replace(' ', '-')
-      Router.push('/search/[title]', `/search/${finalTerms}`)
-    }
+    routeToResults(terms)
   }
   return (
     <div className="container mx-auto pt-6">
@@ -56,6 +67,7 @@ export const SearchBar = (): JSX.Element => {
           </button>
         </form>
       </div>
+      {error && <p className="text-center py-3">Hint: {error}</p>}
     </div>
   )
 }
