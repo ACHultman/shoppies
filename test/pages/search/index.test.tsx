@@ -40,8 +40,6 @@ describe('Search page', () => {
   })
 
   it('alerts upon empty search', async () => {
-    global.alert = jest.fn()
-
     const textbox: HTMLInputElement = screen.getByLabelText(
       'search-input'
     ) as HTMLInputElement
@@ -52,12 +50,14 @@ describe('Search page', () => {
 
     const submitButton = screen.getByLabelText('search-submit')
     fireEvent.click(submitButton)
-    expect(global.alert).toHaveBeenCalledTimes(1)
+    expect(
+      screen.getByText(
+        /Enter a name of your favourite movie \(e\.g\. "tenet"\)\./i
+      )
+    ).toBeInTheDocument()
   })
 
   it('alerts when search terms are less than three characters long', async () => {
-    global.alert = jest.fn()
-
     const textbox: HTMLInputElement = screen.getByLabelText(
       'search-input'
     ) as HTMLInputElement
@@ -68,7 +68,11 @@ describe('Search page', () => {
 
     const submitButton = screen.getByLabelText('search-submit')
     fireEvent.click(submitButton)
-    expect(global.alert).toHaveBeenCalledTimes(1)
+    expect(
+      screen.getByText(
+        /Hint: Your search should be at least three characters long\./i
+      )
+    ).toBeInTheDocument()
   })
 
   it('routes to search page for entered search terms', async () => {
