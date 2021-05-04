@@ -26,7 +26,7 @@ const Nominations = ({
                     Type={nom.Type}
                   />
                 </div>
-                <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-gradient-to-l from-gray-300 to-purple-200 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-gradient-to-t from-gray-200 to-purple-200 rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                   <div className="mb-8">
                     <div className="text-gray-900 font-bold text-xl mb-2">
                       {nom.Title}
@@ -35,8 +35,13 @@ const Nominations = ({
                   </div>
                   <div className="flex items-center">
                     <div className="text-sm">
-                      <p className="text-gray-900 leading-none">{nom.Actors}</p>
-                      <p className="text-gray-600">{nom.Year}</p>
+                      <p className="text-gray-900 py-1 leading-relaxed">
+                        Starring: {nom.Actors}
+                      </p>
+                      <p className="text-gray-900 leading-none py-1">
+                        Director: {nom.Director}
+                      </p>
+                      <p className="text-gray-600 py-1">{nom.Year}</p>
                     </div>
                   </div>
                 </div>
