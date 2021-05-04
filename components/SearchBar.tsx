@@ -20,7 +20,7 @@ export const SearchBar = (): JSX.Element => {
   useEffect(() => {
     const timer = setTimeout(() => routeToResults(terms), 400)
     return () => clearTimeout(timer)
-  }, [routeToResults, terms])
+  }, [terms])
 
   const handleEntry = (e) => {
     setTerms(e.target.value)
@@ -31,6 +31,7 @@ export const SearchBar = (): JSX.Element => {
 
     routeToResults(terms)
   }
+
   return (
     <div className="container mx-auto pt-6">
       <div className="flex justify-center max-w-screen-sm mx-auto overflow-hidden px-10">

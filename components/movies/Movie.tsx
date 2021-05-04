@@ -39,15 +39,15 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
         <div className="p-2 flex justify-between">
           <h2
             className={
-              'text-2xl transition-all duration-100 ease-in-out group-hover:font-bold'
+              'text-2xl transition-all duration-100 ease-in-out group-hover:font-bold w-4/5'
             }
           >
             {Title}
           </h2>
+          <p className="opacity-0 group-hover:opacity-100">
+            {formatYear(Year)}
+          </p>
         </div>
-      </div>
-      <div className="flex items-center opacity-0 group-hover:opacity-100">
-        <p>{formatYear(Year)}</p>
       </div>
     </div>
   )
