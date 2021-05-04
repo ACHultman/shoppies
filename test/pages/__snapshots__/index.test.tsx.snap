@@ -20,7 +20,7 @@ exports[`Home page matches snapshot 1`] = `
           Movie awards for entrepreneurs.
         </h3>
         <button
-          class="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
+          class="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
         >
           Search For Movies
         </button>
@@ -48,7 +48,7 @@ exports[`Home page matches snapshot 1`] = `
           <p
             class=" mb-8 text-gray-200"
           >
-            Our Smart Health Monitoring Wristwatch is able to capture you vitals while you exercise. You can create different category of exercises and can track your vitals on the go.
+            Just enter the titles of your favourite movies!
           </p>
         </div>
         <div
@@ -193,7 +193,7 @@ exports[`Home page matches snapshot 1`] = `
           Support your favorite movies, start nominating!
         </h3>
         <button
-          class="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider"
+          class="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
         >
           Search For Movies
         </button>
