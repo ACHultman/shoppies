@@ -10,7 +10,7 @@ const Header = (): JSX.Element => {
   return (
     <div className="sticky top-0 z-50 bg-gradient-to-b from-purple-800 backdrop-filter backdrop-blur-sm">
       <div className="w-full px-5 py-2">
-        <header className="flex flex-col sm:flex-row m-5 justify-between h-auto">
+        <header className="flex flex-col sm:flex-row m-1 justify-between h-auto">
           <div className="flex flex-grow justify-evenly max-w-2xl">
             <div onClick={() => router.push('/')}>
               <HeaderItem title="HOME" Icon={HomeIcon} />
@@ -23,7 +23,7 @@ const Header = (): JSX.Element => {
             </div>
           </div>
           <Image
-            className="object-contain"
+            className="object-contain "
             src={'/logo_transparent.png'}
             width={150}
             height={75}
