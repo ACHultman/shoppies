@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+): Promise<void> => {
   const {
     query: { nominationID },
     method,
