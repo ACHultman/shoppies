@@ -13,8 +13,11 @@ const Results = ({ movies, title }: PropsResults): JSX.Element => {
 
   if (!movies || movies.length === 0) {
     return (
-      <div className="flex">
-        <p className="text-2xl">Sorry! No results found for {`'${title}'`}</p>
+      <div>
+        <SearchBar />
+        <p className="text-2xl p-3">
+          Sorry! No results found for {`'${title}'`}
+        </p>
       </div>
     )
   }

@@ -1,28 +1,29 @@
 import { ADD_nomination, REMOVE_nomination } from './types'
 
-export const addNomination = (globalState, newEntry) => (
+export const addNomination = (nominationState: string[], newEntry: string) => (
   dispatch: (arg0: { type: string; payload: string[] }) => any
-) => {
-  let newGlobalState: string[] = []
-  if (globalState.length < 5) {
-    newGlobalState = [...globalState, newEntry]
+): void => {
+  let newNominationState: string[] = []
+  if (nominationState.length < 5) {
+    newNominationState = [...nominationState, newEntry]
   } else {
     alert('Sorry, you have reached the maximum of five nominations.')
-    newGlobalState = globalState
+    newNominationState = nominationState
   }
   return dispatch({
     type: ADD_nomination,
-    payload: newGlobalState,
+    payload: newNominationState,
   })
 }
 
-export const removeNomination = (globalState, nominationToRemove) => (
-  dispatch: (arg0: { type: string; payload: string[] }) => any
-) => {
-  const removeIndex = globalState.indexOf(nominationToRemove)
+export const removeNomination = (
+  nominationState: string[],
+  nominationToRemove: string
+) => (dispatch: (arg0: { type: string; payload: string[] }) => any): void => {
+  const removeIndex = nominationState.indexOf(nominationToRemove)
   let newGlobalState = []
   if (removeIndex >= 0) {
-    newGlobalState = globalState.filter(
+    newGlobalState = nominationState.filter(
       (nominationID) => nominationID !== nominationToRemove
     )
   }
