@@ -14,7 +14,7 @@ export const fetchNominations = async (
   const nominations: IMovieLong[] = []
   for (const nominationID of imbdbIDs) {
     const request = await fetch(
-      `http://localhost:3000/api/nominations/${nominationID}`
+      `${process.env.NEXT_PUBLIC_API_URL}/nominations/${nominationID}`
     )
     const searchResults = (await request.json()).nomination
     nominations.push(searchResults)
