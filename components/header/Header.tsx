@@ -8,7 +8,7 @@ import Banner from './Banner'
 const Header = (): JSX.Element => {
   const router = useRouter()
   return (
-    <div className="sticky top-0 z-50 bg-gradient-to-b from-purple-800">
+    <div className="sticky top-0 z-50 bg-gradient-to-b from-purple-800 backdrop-filter backdrop-blur-sm">
       <div className="w-full px-5 py-2">
         <header className="flex flex-col sm:flex-row m-5 justify-between h-auto">
           <div className="flex flex-grow justify-evenly max-w-2xl">
