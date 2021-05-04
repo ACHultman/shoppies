@@ -8,22 +8,22 @@ import { RootState } from '../../store/store'
 import { ThumbDownIcon, ThumbUpIcon } from '@heroicons/react/outline'
 
 const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
-  const globalState = useSelector(
+  const selectedNominations = useSelector(
     (state: RootState) => state.nominations.nominations
   )
   const dispatch = useDispatch()
   const onClick = () => {
-    if (globalState.indexOf(imdbID) === -1) {
-      dispatch(addNomination(globalState, imdbID))
+    if (selectedNominations.indexOf(imdbID) === -1) {
+      dispatch(addNomination(selectedNominations, imdbID))
     } else {
-      dispatch(removeNomination(globalState, imdbID))
+      dispatch(removeNomination(selectedNominations, imdbID))
     }
   }
   if (!Poster || Poster === 'N/A') {
     Poster = '/noPoster.png'
   }
 
-  const movieNominated = globalState.indexOf(imdbID) > -1
+  const movieNominated = selectedNominations.indexOf(imdbID) > -1
 
   return (
     <div className="group">
