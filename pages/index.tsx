@@ -26,7 +26,7 @@ export const Home = (): JSX.Element => {
           </h3>
           <button
             onClick={() => handleSearchClick()}
-            className="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider"
+            className="bg-white text-gray-800 font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
           >
             Search For Movies
           </button>
@@ -126,7 +126,7 @@ export const Home = (): JSX.Element => {
           </h3>
           <button
             onClick={() => handleSearchClick()}
-            className="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider"
+            className="bg-white text-gray-800 font-bold rounded-full mt-6 py-4 px-8 shadow-lg uppercase tracking-wider focus:outline-none"
           >
             Search For Movies
           </button>
