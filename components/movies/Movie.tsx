@@ -5,6 +5,7 @@ import { formatYear } from '../../utils/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { addNomination, removeNomination } from '../../store/nominations/action'
 import { RootState } from '../../store/store'
+import { ThumbDownIcon, ThumbUpIcon } from '@heroicons/react/outline'
 
 const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
   const globalState = useSelector(
@@ -22,19 +23,37 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
     Poster = '/noPoster.png'
   }
 
+  const movieNominated = globalState.indexOf(imdbID) > -1
+
   return (
     <div className="group">
       <div
         onClick={() => onClick()}
-        className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 cursor-pointer"
+        className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-40 cursor-pointer"
       >
-        <div className="">
+        <div className="relative">
           <Image
             src={Poster}
             layout={'responsive'}
             height={1920 * 1.48}
             width={1920}
+            className="group-hover:opacity-50"
           />
+          <div className="transition duration-500 ease-in-out z-40 absolute top-1/3 left-0.5 opacity-0 group-hover:opacity-100 h-24 w-24 text-center">
+            {movieNominated ? (
+              <>
+                <ThumbDownIcon />
+                <p className="text-center text-xl">
+                  Click to remove nomination
+                </p>
+              </>
+            ) : (
+              <>
+                <ThumbUpIcon />
+                <p className="text-center text-xl">Click to nominate</p>{' '}
+              </>
+            )}
+          </div>
         </div>
         <div className="p-2 flex justify-between">
           <h2
@@ -44,6 +63,7 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
           >
             {Title}
           </h2>
+          {movieNominated && <ThumbUpIcon className="h-8 w-8" />}
           <p className="opacity-0 group-hover:opacity-100">
             {formatYear(Year)}
           </p>
