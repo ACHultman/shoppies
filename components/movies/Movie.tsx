@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { HeartIcon } from '@heroicons/react/outline'
 
 import { IMovieShort } from '../../utils/types'
 import { formatYear } from '../../utils/utils'
@@ -45,9 +44,6 @@ const Movie = ({ imdbID, Poster, Title, Year }: IMovieShort): JSX.Element => {
           >
             {Title}
           </h2>
-          <p className="h-10 w-10" onClick={onClick}>
-            <HeartIcon />
-          </p>
         </div>
       </div>
       <div className="flex items-center opacity-0 group-hover:opacity-100">
